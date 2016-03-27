@@ -12,6 +12,9 @@ namespace app\Http\Controllers;
 class HomecontrollerTest extends \PHPUnit_Framework_TestCase
 {
 
+    /**
+     * Test
+     */
     public function testIndex()
     {
         $this->assertTrue(true);
