@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: cbs
+        psr4_prefix: cbs
+        src_path: app
