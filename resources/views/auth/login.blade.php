@@ -50,7 +50,7 @@
 
                                 <h1><i class="fa fa-paw" style="font-size: 26px;"></i> Stats CBS</h1>
 
-                                <p>LOPEZ Dominique</p>
+                                <p>LOPEZ Dominique.</p>
                             </a>
                         </div>
                     </div>

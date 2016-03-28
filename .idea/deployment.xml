@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="cbs">
+  <component name="PublishConfigData" serverName="cbs" uploadOnCheckin="a54ecd1f-6704-4dc3-a6c2-4f1d6eb41e8d">
     <serverData>
       <paths name="Presta_test">
         <serverdata>
@@ -12,7 +12,7 @@
       <paths name="cbs">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/cbs" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
@@ -24,5 +24,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="cbs" />
   </component>
 </project>
