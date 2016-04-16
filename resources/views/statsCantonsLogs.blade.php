@@ -51,7 +51,10 @@
                                                 @for($i=10; $i>=0 ; $i--)
                                                     <td class="text-center">
                                                         @foreach($new as $c)
-                                                            @if(isset($c->date) && (date('n', strtotime($c->date)) == date('n',mktime(0, 0, 0, date("m")-$i, date("d"),   date("Y")))) )
+                                                            @if(isset($c->date)
+                                                            && (date('n', strtotime($c->date)) === date('n',mktime(0, 0, 0, date("m")-$i, date("d"),   date("Y"))))
+                                                            && (date('Y', strtotime($c->date)) === date('Y',mktime(0, 0, 0, date("m")-$i, date("d"),   date("Y"))))
+                                                             )
                                                                 {{ (int)($c->count/2) }}
                                                                 <?php $cpt += (int)($c->count/2) ?>
                                                             @endif
