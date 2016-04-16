@@ -37,7 +37,7 @@
                                         <thead>
                                         <tr>
                                             <th>Mobiles</th>
-                                            @for($i=10; $i>=0 ; $i--)
+                                            @for($i=11; $i>=0 ; $i--)
                                                 <th class="text-center">{{ date('F',mktime(0, 0, 0, date("m")-$i, date("d"),   date("Y"))) }}</th>
                                             @endfor
                                             <th class="text-center">Total</th>
@@ -48,10 +48,12 @@
                                             <tr>
                                                 <td>{{(isset($mobile[0]->defaut))?"Mobile " . str_pad(substr($mobile[0]->defaut, 11, 2), 2, "0", STR_PAD_LEFT):""}}</td>
                                                 <?php $cpt = 0 ?>
-                                                @for($i=10; $i>=0 ; $i--)
+                                                @for($i=11; $i>=0; $i--)
                                                     <td class="text-center">
                                                         @foreach($mobile as $c)
-                                                            @if(isset($c->date) && (date('n', strtotime($c->date)) == date('n',mktime(0, 0, 0, date("m")-$i, date("d"),   date("Y")))) )
+                                                            @if(isset($c->date) &&
+                                                            (date('m', strtotime($c->date)) === date('m',mktime(0, 0, 0, date("m")-$i, date("d"),   date("Y")))) &&
+                                                            (date('Y', strtotime($c->date)) === date('Y',mktime(0, 0, 0, date("m")-$i, date("d"),   date("Y")))) )
                                                                 {{ (int)($c->count/2) }}
                                                                 <?php $cpt += (int)($c->count/2) ?>
                                                             @endif
