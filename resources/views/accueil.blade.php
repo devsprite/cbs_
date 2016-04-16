@@ -182,7 +182,8 @@
                         <tbody>
                         @foreach($datasOperateurs as $datasOperateur)
                             <tr>
-                                <td>{{ $datasOperateur->date }}<br/>{{ substr($datasOperateur->heure_de_debut,10,10) }}</td>
+
+                                <td>{{ $datasOperateur->date }}<br/>{{ date( ' H\hi ', strtotime($datasOperateur->heure_de_debut)) }}</td>
                                 <td>{{ substr($datasOperateur->duree,14,10) }}</td>
                                 <td>{{ $datasOperateur->commentaires }}</td>
                                 <td>{{ $datasOperateur->mobile }}</td>
