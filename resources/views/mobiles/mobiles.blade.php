@@ -1,4 +1,4 @@
-@extends('..\main_page')
+@extends('common.base')
 
 @section('title', 'Stats Mobiles')
 
