@@ -112,48 +112,19 @@
     </div>
         <!-- /content -->
 
-    <!-- footer content -->
-    <footer>
-        <div class="">
-            <p class="pull-right">Stats CBS - LOPEZ Dominique
-                <span class="lead"> <i class="fa fa-paw"></i> Stats CBS</span>
-            </p>
-        </div>
-        <div class="clearfix"></div>
-    </footer>
-    <!-- /footer content -->
+@include('common.footer')
 </div>
 @endsection
 
 @section('script')
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
-    <!-- chart js -->
-    <script src="{{ URL::asset('js/chartjs/chart.min.js') }}"></script>
     <!-- bootstrap progress js -->
-    <script src="{{ URL::asset('js/progressbar/bootstrap-progressbar.min.js') }}"></script>
     <script src="{{ URL::asset('js/nicescroll/jquery.nicescroll.min.js') }}"></script>
-    <!-- icheck -->
-    <script src="{{ URL::asset('js/icheck/icheck.min.js') }}"></script>
     <script src="{{ URL::asset('js/custom.js') }}"></script>
-
-
     <!-- sparkline -->
     <script src="{{ URL::asset('js/moris/raphael-min.js') }}"></script>
     <script src="{{ URL::asset('js/moris/morris.js') }}"></script>
 
-    <!--  DataTable  -->
-    <script src="{{ URL::asset('js/datatables/jquery.dataTables.min.js') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#example').DataTable({
-                createdRow: function (row) {
-                    $('td', row).attr('tabindex', 0);
-                },
-                "pageLength": 50,
-            });
-        });
-    </script>
-
-@include('datepicker')
+@include('common.date_picker')
 
 @endsection
