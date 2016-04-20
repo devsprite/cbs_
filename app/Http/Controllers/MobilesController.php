@@ -48,6 +48,8 @@ class MobilesController extends Controller
 
         $rangeDate = Data_operateur::rangeDate($startDate, $endDate, 'desc');
 
+        
+
         return view('mobiles/mobiles')->with([
             'mobiles' => $mobiles,
             'mobilesDistinct' => $mobilesDistinct,

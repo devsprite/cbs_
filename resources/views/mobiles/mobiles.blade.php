@@ -110,21 +110,15 @@
                 @endif
                 @endforeach
     </div>
-        <!-- /content -->
-
+    <!-- /content -->
 @include('common.footer')
 </div>
 @endsection
 
 @section('script')
-    <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
-    <!-- bootstrap progress js -->
-    <script src="{{ URL::asset('js/nicescroll/jquery.nicescroll.min.js') }}"></script>
-    <script src="{{ URL::asset('js/custom.js') }}"></script>
     <!-- sparkline -->
     <script src="{{ URL::asset('js/moris/raphael-min.js') }}"></script>
     <script src="{{ URL::asset('js/moris/morris.js') }}"></script>
-
-@include('common.date_picker')
-
+    @include('common.common_js')
+    @include('common.date_picker')
 @endsection
