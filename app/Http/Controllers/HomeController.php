@@ -83,7 +83,18 @@ class Homecontroller extends Controller
         $getDefautsTRA110 = DefautsAutomate::getDefautsDevice('PAUSE_TRA110', $startDate, $endDate);
         $defautsTRA110 = Tools::dureeDefauts($getDefautsTRA110);
 
+        $defautsMobiles = StatsController::getDefautsMobiles($startDate, $endDate);
+        $defautsMobiles['defauts'] = array_slice($defautsMobiles['defauts'], 0, 3);
+        foreach ($defautsMobiles['defauts'] as $numeroMobile => $defautsMobile ) {
+            $c = 0;
+            foreach ($defautsMobile as $key => $value) {
+                $c += $value->count;
+            }
+            $defautsMobiles['defauts'][$numeroMobile]['total'] = $c;
+        }
 
+        $defautsMobiles['cantons'] = array_slice($defautsMobiles['cantons'], 0, 3);
+        $defautsMobiles['commentaires'] = array_slice($defautsMobiles['commentaires'], 0, 3);
 
         $defautsIncendie = DefautsAutomate::getDefauts('DEF_INCENDIE', '', 'FERMER', 'OUVRIR', $startDate, $endDate);
 
@@ -117,7 +128,8 @@ class Homecontroller extends Controller
                 'derniereMaJ' => $derniereMaJ,
                 'startDate' => $startDate,
                 'endDate' => $endDate,
-                'urlStartAndEndDate' => $urlStartAndEndDate
+                'urlStartAndEndDate' => $urlStartAndEndDate,
+                'defautsMobiles' => $defautsMobiles
             ]);
     }
 

@@ -334,4 +334,16 @@ class StatsController extends Controller
         return $tableDefauts;
     }
 
+    static function getDefautsMobiles($startDate, $endDate)
+    {
+        $datas = Data_operateur::getNumberOfProblemByDevice($startDate, $endDate, array('mobile'));
+        $mobiles = [];
+        array_shift($datas['mobile']);
+        $mobiles['defauts'] = Data_operateur::getNumberOfTypeProblemByDevice($startDate, $endDate, $datas['mobile'], 'symptome', 'mobile');
+        $mobiles['cantons'] = Data_operateur::getNumberOfTypeProblemByDevice($startDate, $endDate, $datas['mobile'], 'numero_canton', 'mobile');
+        $mobiles['commentaires'] = Data_operateur::getNumberOfTypeProblemByDevice($startDate, $endDate, $datas['mobile'], 'commentaires', 'mobile');
+
+        return $mobiles;
+    }
+
 }
