@@ -26,63 +26,38 @@ class MobilesController extends Controller
         if (Input::get('daterangepicker_start') && Input::get('daterangepicker_end')) {
             $startDate = HomeController::reOrderDate(Input::get('daterangepicker_start'));
             $endDate = HomeController::reOrderDate(Input::get('daterangepicker_end'));
-            $urlStartAndEndDate = '?daterangepicker_start=' . date('m-d-Y', strtotime($startDate)) .
-                '&daterangepicker_end=' . date('m-d-Y', strtotime($endDate));
+            $urlStartAndEndDate = '?daterangepicker_start='.date('m-d-Y', strtotime($startDate)).
+                '&daterangepicker_end='.date('m-d-Y', strtotime($endDate));
         } else {
             $startDate = date("Y-m-d", mktime(0, 0, 0, date("m") - 1, date("d"), date("Y")));
             $endDate = date("Y-m-d", mktime(0, 0, 0, date("m"), date("d"), date("Y")));
             $urlStartAndEndDate = '';
         }
 
-//        $mobiles = [];
-//        $mobilesDistinct = Data_operateur::getDistinctMobile();
-//
-//        foreach($mobilesDistinct as $m){
-//                $mobiles[$m->mobile][0] = Data_operateur::getMobile($m->mobile, $startDate, $endDate);
-//                $mobiles[$m->mobile][1] = Data_operateur::getNumberOfInterventionsDailyMobile($m->mobile, $startDate, $endDate);
-//                $mobiles[$m->mobile][2] = count($mobiles[$m->mobile][0]);
-//        }
-//
-//        // Classement par ordre décroissant du nombre de defaut
-//        rsort($mobiles);
-//
-//        $rangeDate = $this->getDefauts($startDate, $endDate);
-        $m = $this->getDefauts($startDate, $endDate);
-
-
-        return view('mobiles/mobiles')->with([
-            'mobiles' => $m['mobiles'],
-            'mobilesDistinct' => $m['mobilesDistinct'],
-            'startDate' => $startDate,
-            'rangeDate' => $m['rangeDate'],
-            'endDate' => $endDate,
-            'urlStartAndEndDate' => $urlStartAndEndDate
-        ]);
-    }
-
-    public function getDefauts($startDate, $endDate)
-    {
         $mobiles = [];
         $mobilesDistinct = Data_operateur::getDistinctMobile();
 
-        foreach ($mobilesDistinct as $m) {
-            $mobiles[$m->mobile][0] = Data_operateur::getMobile($m->mobile, $startDate, $endDate);
-            $mobiles[$m->mobile][1] = Data_operateur::getNumberOfInterventionsDailyMobile($m->mobile, $startDate, $endDate);
-            $mobiles[$m->mobile][2] = count($mobiles[$m->mobile][0]);
+        foreach($mobilesDistinct as $m){
+                $mobiles[$m->mobile][0] = Data_operateur::getMobile($m->mobile, $startDate, $endDate);
+                $mobiles[$m->mobile][1] = Data_operateur::getNumberOfInterventionsDailyMobile($m->mobile, $startDate, $endDate);
+                $mobiles[$m->mobile][2] = count($mobiles[$m->mobile][0]);
         }
 
         // Classement par ordre décroissant du nombre de defaut
         rsort($mobiles);
 
-        $rangeDate = $this->getDefauts($startDate, $endDate);
+        $rangeDate = Data_operateur::rangeDate($startDate, $endDate, 'desc');
 
-        $r = array(
+
+
+        return view('mobiles/mobiles')->with([
             'mobiles' => $mobiles,
             'mobilesDistinct' => $mobilesDistinct,
-            'rangeDate' => $rangeDate
-        );
-
-        return $r;
+            'startDate' => $startDate,
+            'rangeDate' => $rangeDate,
+            'endDate' => $endDate,
+            'urlStartAndEndDate' => $urlStartAndEndDate
+        ]);
     }
 
 }
