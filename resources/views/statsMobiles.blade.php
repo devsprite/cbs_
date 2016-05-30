@@ -34,7 +34,7 @@
 
                         @foreach($donnees['mobile'] as $mobile)
 
-                        <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div  id="{{ rawurlencode($mobile->mobile) }}" class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>{{ $mobile->mobile }} <small>Nombre de défaut{{ ($mobile->count>1)?'s':'' }} : {{ $mobile->count }}</small></h2>

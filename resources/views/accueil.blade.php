@@ -99,8 +99,8 @@
                 <span class="count_top"><i class="fa fa-cab"></i> Top Mobiles</span>
                 <div class="">
                     @foreach( $defautsMobiles['defauts'] as $mobile => $defautsMobile)
-                        <span>{{ $mobile }} : {{ $defautsMobile['total'] }} défauts.
-                        ({{ $defautsMobile[0]->count }} défauts : {{ $defautsMobile[0]->symptome }})</span>
+                        <a href="{{ route('mobiles').'#'.rawurlencode($mobile) }}"><span>{{ $mobile }} : {{ $defautsMobile['total'] }} défauts.
+                        ({{ $defautsMobile[0]->count }} défauts : {{ $defautsMobile[0]->symptome }})</span></a>
                     @endforeach
                 </div>
                 <span class="count_bottom"></span>
