@@ -58,12 +58,8 @@ class StatsController extends Controller
         ];
         switch ($materiel) {
             case 'statsMobiles' :
-                $mobiles = [];
+                $mobiles = self::getDefautsMobiles($startDate, $endDate);
                 array_shift($datas['mobile']);
-                $mobiles['defauts'] = Data_operateur::getNumberOfTypeProblemByDevice($startDate, $endDate, $datas['mobile'], 'symptome', 'mobile');
-                $mobiles['cantons'] = Data_operateur::getNumberOfTypeProblemByDevice($startDate, $endDate, $datas['mobile'], 'numero_canton', 'mobile');
-                $mobiles['commentaires'] = Data_operateur::getNumberOfTypeProblemByDevice($startDate, $endDate, $datas['mobile'], 'commentaires', 'mobile');
-
                 $viewDatas['mobiles'] = $mobiles;
                 $viewDatas['donnees']['mobile'] = $datas['mobile'];
                 break;
